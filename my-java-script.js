@@ -1,4 +1,8 @@
 
 
+function getWater() {
+	console.log("Get some water")
+}
 
-console.log("Here is my JavaScript");
+
+getWater();
