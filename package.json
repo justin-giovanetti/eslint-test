@@ -2,6 +2,7 @@
 	"scripts": {
 		"lint": "eslint ./src --ext .js",
 		"lint-root": "eslint . --ext .js"
+		
 	},
 	"devDependencies": {
 		"eslint": "^8.38.0"
