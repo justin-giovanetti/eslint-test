@@ -1,2 +1,48 @@
-Test
+# Name
+name: Node CI environment
 
+# The event
+on: [pull_request]
+
+# All of the jobs that run when the event happens.
+jobs:
+
+  # This can be named anything. It's a variable name in the pipeline.
+  lint:
+
+    # OS you want it to run on
+    runs-on: ubuntu-latest
+
+    # These are variables that can be used throughout this workflow, kind of like environment variables.
+    strategy:
+      matrix:
+        node-version: [18.x]
+
+    # Steps that run. Each dash is the creation of essentially an element, like an element in an array. 
+    steps:
+
+      # This step, which is an action, clones your project into the ubuntu-latest machine.
+      # Here is the code for the checkout: https://github.com/actions/checkout
+      - uses: actions/checkout@v1
+
+        # This is a parameter that you give to the specified action above. Like ... checkout(with)
+        with:
+          fetch-depth: 1
+          # You can have sub projects inside of git. It's a way of telling git to consider something inside as a new repo, but it's not really a repo, per se. 
+          # fetch-depth number refers if you want to include those sub projects. Depth 1 just means use the root level, no deeper.
+
+
+      - name: Use Node.js ${{ matrix.node-version }}
+
+        # setup-node is its own repo, specifying the v1 means to use the v1 of that repo's code.
+        uses: actions/setup-node@v1
+        with:
+          node-version: ${{ matrix.node-version }}
+
+      - name: npm install
+        run: npm i --ignore-scripts
+
+      - name: Run ESLint
+        run: npm run lint-root
+      
+      
