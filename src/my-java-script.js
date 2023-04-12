@@ -8,4 +8,6 @@ function getLemons() {
 
 getLemons();
 
+getLemons()
+
 getLemons();
