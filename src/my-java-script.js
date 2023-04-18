@@ -6,8 +6,8 @@ function getLemons() {
 }
 
 
-getLemons();
+getLemons()
 
 getLemons()
 
-getLemons();
+getLemons()
