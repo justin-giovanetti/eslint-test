@@ -5,4 +5,4 @@ function getWater() {
 }
 
 
-getWater();
+getWater()
